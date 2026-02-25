@@ -1,0 +1,214 @@
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:#f4f6fb}
+
+/* ================= HERO VIDEO ================= */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+padding:0 8%;
+color:white;
+overflow:hidden;
+}
+
+/* video */
+.hero video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+/* overlay */
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(90deg,rgba(0,0,0,.70),rgba(0,0,0,.30));
+z-index:-1;
+}
+
+/* content */
+.content{
+max-width:620px;
+animation:fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.content h1{
+font-size:52px;
+margin-bottom:12px;
+letter-spacing:1px;
+}
+
+.content h2{
+font-size:28px;
+color:#ffdede;
+height:36px;
+margin-bottom:18px;
+}
+
+.content p{
+color:#eee;
+margin-bottom:28px;
+line-height:1.6;
+}
+
+/* buttons */
+.buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.buttons a{
+padding:14px 28px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.primary{
+background:#c40000;
+color:white;
+}
+.primary:hover{background:#8b0000}
+
+.secondary{
+border:2px solid white;
+color:white;
+}
+.secondary:hover{background:white;color:#8b0000}
+
+/* scroll arrow */
+.scroll{
+position:absolute;
+bottom:35px;
+left:50%;
+transform:translateX(-50%);
+font-size:32px;
+color:white;
+cursor:pointer;
+animation:bounce 1.8s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translate(-50%,0)}
+50%{transform:translate(-50%,10px)}
+}
+
+/* dummy home section */
+.home-section{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+color:#8b0000;
+background:white;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.hero{
+text-align:center;
+justify-content:center;
+padding:120px 20px 60px;
+}
+
+.content{
+max-width:100%;
+}
+
+.content h1{font-size:34px}
+.content h2{font-size:20px;height:28px}
+.content p{font-size:14px}
+
+.buttons{
+flex-direction:column;
+align-items:center;
+}
+
+.buttons a{
+width:85%;
+max-width:280px;
+padding:12px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<!-- background video -->
+
+<video autoplay muted loop playsinline>
+<source src="204306-923909642_medium (1).mp4" type="video/mp4">
+</video>
+
+<div class="content">
+<h1>Stackly Banking Services</h1>
+<h2 id="typing"></h2>
+
+<p>
+Secure digital banking with instant transfers, smart savings accounts,
+credit cards and 24/7 AI customer assistance.
+</p>
+
+<div class="buttons">
+<a href="4041.html" class="primary">→ Open Account</a>
+<a href="4041.html" class="secondary">→ Explore Services</a>
+</div>
+</div>
+
+<!-- scroll arrow -->
+
+<div class="scroll" onclick="scrollDown()">⌄</div>
+
+</section>
+
+
+
+<script>
+
+/* ===== TITLE ANIMATION (Typing) ===== */
+const words=["Digital Payments","Smart Savings","Instant Loans","Secure Credit Cards","24/7 AI Support"];
+let i=0,j=0,typing=document.getElementById("typing");
+
+function type(){
+if(j<words[i].length){
+typing.textContent+=words[i][j++];
+setTimeout(type,70);
+}else setTimeout(erase,1500);
+}
+
+function erase(){
+if(j>0){
+typing.textContent=words[i].substring(0,--j);
+setTimeout(erase,40);
+}else{ i=(i+1)%words.length; setTimeout(type,300); }
+}
+type();
+
+/* ===== SCROLL DOWN ===== */
+function scrollDown(){
+document.getElementById("home").scrollIntoView({behavior:"smooth"});
+}
+
+</script>
